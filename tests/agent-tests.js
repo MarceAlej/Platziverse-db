@@ -1,9 +1,9 @@
 'use strict'
 
-const test = require('ava')
-const sinon = require('sinon')
-const proxyquire = require('proxyquire')
-const agentFixtures = require('./fixtures/agent')
+import test from 'ava'
+import sinon from 'sinon'
+import proxyquire from 'proxyquire'
+import agentFixtures from './fixtures/agent'
 
 const config = {
   logging: function () {
@@ -20,6 +20,13 @@ let single = Object.assign({}, agentFixtures.single)
 let AgentStub = null
 let db = null
 let sandbox = null
+let uuid = 'yyy-yyy-yyy'
+
+let uuidArgs = {
+    where: {
+        uuid
+    }
+}
 
 test.beforeEach(async () => {
   sandbox = sinon.createSandbox()
@@ -27,6 +34,16 @@ test.beforeEach(async () => {
   AgentStub = {
     hasMany: sandbox.spy()
   }
+
+  // Model create stub
+
+  // Model findOne stub
+  AgentStub.findOne = sandbox.stub()
+  AgentStub.findOne.withArgs(uuidArgs).returns(Promise.resolve(agentFixtures.byUuid(uuid)))
+
+  // Model update stub
+  AgentStub.update = sandbox.stub()
+  AgentStub.update.withArgs(single, uuidArgs).returns(Promise.resolve(single))
 
   // model findById stub
   AgentStub.findById = sandbox.stub()
@@ -64,4 +81,14 @@ test.serial('Agent#findById', async t => {
     t.true(AgentStub.findById.calledWith(id), 'findById should be called with specified id')
 
     t.deepEqual(agent, agentFixtures.byId(id), 'should be the same')
+})
+
+test.serial('Agent#createOrUpdate', async t => {
+    let agent = await db.Agent.createOrUpdate(single)
+
+    t.true(AgentStub.findOne.called, 'findOne should be called on model')
+    t.true(AgentStub.findOne.calledTwice, 'findOne should be called twice')
+    t.true(AgentStub.update.calledOnce, 'update should be called once')
+
+    t.deepEqual(agent, single, 'Agent should be the same')
 })
