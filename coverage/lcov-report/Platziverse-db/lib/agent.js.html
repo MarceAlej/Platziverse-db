@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.29% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/14</span>
+                <span class='fraction'>11/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.29% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/14</span>
+                <span class='fraction'>11/14</span>
             </div>
         
             
@@ -124,36 +124,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,6 +138,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,36 +186,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
 &nbsp;
 module.exports = function setupAgent (AgentModel) {
-  async function createOrUpdate (agent) {
-    const cond = {
-      where: {
-        uuid: agent.uuid
-      }
-    }
-&nbsp;
-    const existingAgent = await AgentModel.findOne(cond)
-&nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (existingAgent) {
-      const updated = <span class="cstat-no" title="statement not covered" >await AgentModel.update(agent, cond)</span>
-<span class="cstat-no" title="statement not covered" >      return updated ? AgentModel.findOne(cond) : existingAgent</span>
-    }
-&nbsp;
-    const result = await AgentModel.create(agent)
-    return result.toJSON()
-  }
-&nbsp;
-  function findById (id) {
-    return AgentModel.findById(id)
-  }
-&nbsp;
-  function <span class="fstat-no" title="function not covered" >findByUuid </span>(uuid) {
-<span class="cstat-no" title="statement not covered" >    return AgentModel.findOne({</span>
-      where: {
-        uuid
-      }
-    })
-  }
-&nbsp;
   function <span class="fstat-no" title="function not covered" >findAll </span>() {
 <span class="cstat-no" title="statement not covered" >    return AgentModel.findAll()</span>
   }
@@ -237,6 +207,36 @@ module.exports = function setupAgent (AgentModel) {
     })
   }
 &nbsp;
+  async function createOrUpdate (agent) {
+    const cond = {
+      where: {
+        uuid: agent.uuid
+      }
+    }
+&nbsp;
+    const existingAgent = await AgentModel.findOne(cond)
+&nbsp;
+    if (existingAgent) {
+      const updated = await AgentModel.update(agent, cond)
+      return updated ? AgentModel.findOne(cond) : <span class="branch-1 cbranch-no" title="branch not covered" >existingAgent</span>
+    }
+&nbsp;
+    const result = await AgentModel.create(agent)
+    return result.toJSON()
+  }
+&nbsp;
+  function findById (id) {
+    return AgentModel.findById(id)
+  }
+&nbsp;
+  function <span class="fstat-no" title="function not covered" >findByUuid </span>(uuid) {
+<span class="cstat-no" title="statement not covered" >    return AgentModel.findOne({</span>
+      where: {
+        uuid
+      }
+    })
+  }
+&nbsp;
   return {
     findById,
     createOrUpdate,
@@ -253,7 +253,7 @@ module.exports = function setupAgent (AgentModel) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Mon Feb 03 2020 11:24:05 GMT-0300 (GMT-03:00)
+                at Mon Feb 03 2020 13:41:55 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>
